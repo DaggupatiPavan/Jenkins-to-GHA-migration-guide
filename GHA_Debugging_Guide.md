@@ -1,3 +1,14 @@
+# GitHub Actions Debugging & Troubleshooting Guide
+
+Debugging CI/CD pipelines can be frustrating because of the feedback loop (commit -> wait -> fail). This guide provides techniques to debug faster and resolve common issues in GitHub Actions (GHA).
+
+## 1. Native Debugging Tools
+
+Before reaching for external tools, enable GHA's built-in verbose logging.
+
+### Enable Debug Logging
+You can enable verbose logs by adding specific **Repository Secrets**.
+1.  Go to **Settings** -> **Secrets and variables** -> **Actions**.
 2.  Add the following secrets with the value `true`:
     *   `ACTIONS_RUNNER_DEBUG`: Enables diagnostic logs for the runner itself (useful for self-hosted runner issues).
     *   `ACTIONS_STEP_DEBUG`: Enables debug logs for every step. This is the **most useful** one. It shows inputs, outputs, and expanded command execution.
@@ -193,3 +204,4 @@ To use the medium image by default:
     ```
 2.  **Isolate**: If a workflow is complex, create a minimal reproduction workflow with just the failing step.
 3.  **Check Status**: Check [githubstatus.com](https://www.githubstatus.com/) to see if Actions are having an outage.
+
